@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#001648">
+  <div class="container mt-4 mb-4">
+    <a class="navbar-brand" routerLink=""> <img src="assets/Images/SekkaLogo.png"> </a>
+    <!--Logo Image Binding-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" style="color:#03CFFF" routerLink="home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color:#03CFFF" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color:#03CFFF" href="#">Pricing</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" style="color:#03CFFF" href="#" id="navbarDropdownMenuLink" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color:#001648">
+            <a class="dropdown-item" style="color:#03CFFF" routerLink="register">Register</a>
+            <a class="dropdown-item" style="color:#03CFFF" routerLink="login">Login</a>
+            <a class="dropdown-item" style="color:#03CFFF" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
