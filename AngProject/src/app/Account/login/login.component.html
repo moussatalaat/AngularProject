@@ -1,1 +1,68 @@
-<h1> Login WORKS !! </h1>
+<div class="container mt-4 mb-4">
+    <h5 class="title"><i class="fa fa-sign-in" aria-hidden="true"></i> Login Form <i class="fa fa-sign-in"
+            aria-hidden="true"></i></h5>
+    <hr class="mb-4" />
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+
+            <form [formGroup]="">
+                <div class="form-group">
+                    <label for="UserName">User Name</label>
+                    <input type="text" formControlName="userName" class="form-control" id="UserName"
+                        placeholder="Please Enter your Username">
+
+
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" formControlName="email" class="form-control" id="email"
+                        placeholder="Please enter your Email">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" formControlName="password" class="form-control" id="password"
+                        placeholder="Please enter your Password">
+
+
+
+                </div>
+
+                <!-- <div class="form-group">
+            <label for="PasswordConfirm">Confirm Password</label>
+            <input type="password" formControlName="PasswordConfirm" class="form-control" id="PasswordConfirm"
+              placeholder="Password Confirm" required minlength="6"
+              [ngClass]="{'is-invalid' : !this.userForm.get('PasswordConfirm').valid && this.userForm.get('PasswordConfirm').touched}">
+            <div class="text-danger"
+              *ngIf="!this.userForm.get('PasswordConfirm').valid && (this.userForm.get('PasswordConfirm').touched || this.userForm.get('PasswordConfirm').dirty)">
+              <div *ngIf="this.userForm.get('PasswordConfirm').errors.required">
+                {{messageValidate.passwordConfim.required}}
+              </div>
+              <div *ngIf="this.userForm.get('PasswordConfirm').errors.minlength">
+                {{messageValidate.passwordConfim.minlength}}
+              </div>
+            </div>
+            <div class="text-danger" *ngIf="isPasswordMatch()">
+              {{messageValidate.passwordConfim.isMatch}}
+            </div>
+  
+          </div> -->
+
+                <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                <!-- <div class="alert alert-primary mt-3" role="alert">
+            <strong>userName: </strong>{{this.userForm.get('userName').value}}
+          </div>
+          <div class="alert alert-primary mt-3" role="alert">
+            <strong>username valid: </strong>{{this.userForm.get('userName').valid}}
+          </div> -->
+            </form>
+        </div>
+
+    </div>
+
+    <div class="btn-login mt-5 mb-5 text-center">
+        New? You can <a href="#" class="text-danger">Register</a> now
+    </div>
+</div>

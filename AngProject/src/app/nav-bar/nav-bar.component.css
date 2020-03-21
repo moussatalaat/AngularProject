@@ -1,0 +1,8 @@
+@media (min-width: 1024px) {
+  .navbar-brand {
+    margin-left: 70px;
+  }
+}
+#signUpBtn {
+  margin-right: 30px;
+}
