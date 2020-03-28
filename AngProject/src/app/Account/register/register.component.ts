@@ -1,3 +1,4 @@
+import { Users } from './../../Models/user';
 import { RegisterModel } from "./../../Models/register-model";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -11,11 +12,13 @@ import { RegisterServiceService } from "src/app/services/register-service.servic
 export class RegisterComponent implements OnInit {
   public messageValidate = {
     userName: {
-      required: "User Name is required"
+      required: "User Name is required",
+      used:""
     },
     email: {
       required: "Email is required",
-      notValid: "Invalid Email Address"
+      notValid: "Invalid Email Address",
+      used:""
     },
     password: {
       required: "Password is Required",
@@ -23,7 +26,7 @@ export class RegisterComponent implements OnInit {
       notValid:
         "Password must contan at least 1 Uppercase 1 Lowercase and 1 Alphanumeric char"
     },
-    passwordConfim: {
+    passwordConfirm: {
       required: "Password Confirmation Required",
       minlength: "Minimum 8 Characters",
       isMatch: "Password and Confirmation do not match"
@@ -38,8 +41,12 @@ export class RegisterComponent implements OnInit {
   userForm: FormGroup;
   reg: RegisterModel;
   regex: RegExp;
+  users: Users[];
+  message: string;
 
   ngOnInit() {
+    this.message = '';
+    this.users = [];
     this.reg = {
       userName: "",
       email: "",
@@ -51,6 +58,8 @@ export class RegisterComponent implements OnInit {
       password: ["", [Validators.required, Validators.minLength(8)]],
       passwordConfirm: ["", [Validators.required, Validators.minLength(8)]]
     });
+
+    this.allUsers();
   }
 
   register() {
@@ -58,7 +67,9 @@ export class RegisterComponent implements OnInit {
       this.validateRegisterModel();
       this.service.Register(this.reg).subscribe(
         success => {
-          alert("Registeration Success");
+          this.message = 'Registeration Succeded Please confirm your email';
+          this.userForm.value.password = '';
+          // this.message = 'Registeration Succeded Please confirm your email';
         },
         error => alert(error.error)
       );
@@ -71,15 +82,9 @@ export class RegisterComponent implements OnInit {
   }
 
   isPasswordMatch() {
-    if (
-      this.userForm.value.password !== "" &&
-      this.userForm.value.passwordConfirm !== ""
-    ) {
-      if (
-        this.userForm.value.password !== this.userForm.value.passwordConfirm &&
-        this.userForm.value.password.length > 7 &&
-        this.userForm.value.passwordConfirm.length > 7
-      ) {
+    if (this.userForm.value.password !== '' && this.userForm.value.passwordConfirm !== '') {
+      if ((this.userForm.value.password !== this.userForm.value.passwordConfirm )&& this.userForm.value.password.length > 7 &&
+        this.userForm.value.passwordConfirm.length > 7) {
         return true;
       }
     }
@@ -88,29 +93,60 @@ export class RegisterComponent implements OnInit {
 
   isPasswordValid() {
     const pass = this.userForm.value.password;
-    if (pass !== "" && pass.length >= 7) {
+    if(pass != '' || pass.length >= 7){
       this.regex = new RegExp("[a-z]");
-      if (!this.regex.test(pass)) {
-        this.messageValidate.password.notValid =
-          "password must have at least 1 Lowercase character";
+      if (!this.regex.test(pass)){
+        this.messageValidate.password.notValid = 'password must have at least 1 Lowercase character';
+        return false;
       }
       this.regex = new RegExp("[A-Z]");
-      if (!this.regex.test(pass)) {
-        this.messageValidate.password.notValid =
-          "password must have at least 1 Uppercase character";
+      if (!this.regex.test(pass)){
+        this.messageValidate.password.notValid = 'password must have at least 1 Uppercase character';
+        return false;
       }
-      this.regex = new RegExp("!@#$%^&*()_+{}");
-      if (!this.regex.test(pass)) {
-        this.messageValidate.password.notValid =
-          "password must have at least 1 Special character";
+      this.regex = new RegExp("[~!@#$%^&*()+<>{}]");
+      if (!this.regex.test(pass)){
+        this.messageValidate.password.notValid = 'password must have at least 1 Special character';
+        return false;
       }
-      this.regex = new RegExp("d+");
-      if (!this.regex.test(pass)) {
-        this.messageValidate.password.notValid =
-          "password must have at least 1 number";
+      this.regex = new RegExp("[0-9]");
+      if (!this.regex.test(pass)){
+        this.messageValidate.password.notValid = 'password must have at least a number character';
+        return false;
       }
     }
     return true;
   }
+
+  allUsers(){
+    this.service.GetAllUsers().subscribe(list => {
+      this.users = list;
+      //console.log(this.users);
+    },
+    error => alert(error.error)
+    );
+  }
+
+  isUserNameExists(){
+    for(const name of this.users){
+      const nameUser = this.userForm.value.userName;
+      if(name.userName === nameUser){
+        this.messageValidate.userName.used = 'This Username is Already used';
+        return true;
+      }
+    }
+    return false;
+  }
+
+  isEmailExists(){
+    for(const email of this.users){
+      const em = this.userForm.value.email;
+      if(email.email === em){
+        this.messageValidate.email.used = 'This Email is Already used';
+        return true;
+      }
+    }
+    return false;
+  }
+
 }
-//!pass.match(/[\d(a-z)A-Z!@#$%^&*()_+]/

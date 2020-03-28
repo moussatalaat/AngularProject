@@ -3,60 +3,35 @@
             aria-hidden="true"></i></h5>
     <hr class="mb-4" />
     <div class="row justify-content-center">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf = "message != null && message != ''">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        {{message}}
+      </div>
+
         <div class="col-lg-6 col-md-6 col-sm-6">
-
-            <form [formGroup]="">
-                <div class="form-group">
-                    <label for="UserName">User Name</label>
-                    <input type="text" formControlName="userName" class="form-control" id="UserName"
-                        placeholder="Please Enter your Username">
-
-
-                </div>
+            <form [formGroup]="loginForm" (ngSubmit)="Login()" >
 
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input type="email" formControlName="email" class="form-control" id="email"
-                        placeholder="Please enter your Email">
+                    <input type="email" formControlName="email" class="form-control" id="email" placeholder="Please enter your Email">
 
                 </div>
 
                 <div class="form-group">
                     <label for="Password">Password</label>
-                    <input type="password" formControlName="password" class="form-control" id="password"
-                        placeholder="Please enter your Password">
-
-
-
+                    <input type="password" formControlName="password" class="form-control" id="password" placeholder="Please enter your Password">
                 </div>
+                <div class="form-group">
+                  <label for="Password">Remember me</label>
 
-                <!-- <div class="form-group">
-            <label for="PasswordConfirm">Confirm Password</label>
-            <input type="password" formControlName="PasswordConfirm" class="form-control" id="PasswordConfirm"
-              placeholder="Password Confirm" required minlength="6"
-              [ngClass]="{'is-invalid' : !this.userForm.get('PasswordConfirm').valid && this.userForm.get('PasswordConfirm').touched}">
-            <div class="text-danger"
-              *ngIf="!this.userForm.get('PasswordConfirm').valid && (this.userForm.get('PasswordConfirm').touched || this.userForm.get('PasswordConfirm').dirty)">
-              <div *ngIf="this.userForm.get('PasswordConfirm').errors.required">
-                {{messageValidate.passwordConfim.required}}
+                  <input type="checkbox" formControlName="remember" class="ml-2" id="remember" >
               </div>
-              <div *ngIf="this.userForm.get('PasswordConfirm').errors.minlength">
-                {{messageValidate.passwordConfim.minlength}}
-              </div>
-            </div>
-            <div class="text-danger" *ngIf="isPasswordMatch()">
-              {{messageValidate.passwordConfim.isMatch}}
-            </div>
-  
-          </div> -->
 
-                <button id="submit" type="submit" class="btn btn-primary">Submit</button>
-                <!-- <div class="alert alert-primary mt-3" role="alert">
-            <strong>userName: </strong>{{this.userForm.get('userName').value}}
-          </div>
-          <div class="alert alert-primary mt-3" role="alert">
-            <strong>username valid: </strong>{{this.userForm.get('userName').valid}}
-          </div> -->
+                <button id="submit" type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+
             </form>
         </div>
 
