@@ -1,4 +1,4 @@
-import { Users } from './../../Models/user';
+
 import { RegisterModel } from "./../../Models/register-model";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -41,12 +41,14 @@ export class RegisterComponent implements OnInit {
   userForm: FormGroup;
   reg: RegisterModel;
   regex: RegExp;
-  users: Users[];
+
   message: string;
+  errorMessage: string;
 
   ngOnInit() {
     this.message = '';
-    this.users = [];
+    this.errorMessage = '';
+
     this.reg = {
       userName: "",
       email: "",
@@ -59,19 +61,26 @@ export class RegisterComponent implements OnInit {
       passwordConfirm: ["", [Validators.required, Validators.minLength(8)]]
     });
 
-    this.allUsers();
+
   }
 
   register() {
     if (this.userForm.valid) {
       this.validateRegisterModel();
       this.service.Register(this.reg).subscribe(
-        success => {
-          this.message = 'Registeration Succeded Please confirm your email';
-          this.userForm.value.password = '';
+        success =>
+        {
           // this.message = 'Registeration Succeded Please confirm your email';
+          // this.userForm.value.password = '';
+          //this.ngOnInit();
+          this.message = 'Registeration Succeded Please confirm your email';
+          this.userForm.reset();
         },
-        error => alert(error.error)
+        error =>
+        {
+           this.errorMessage =error.error;
+
+        }
       );
     }
   }
@@ -118,35 +127,6 @@ export class RegisterComponent implements OnInit {
     return true;
   }
 
-  allUsers(){
-    this.service.GetAllUsers().subscribe(list => {
-      this.users = list;
-      //console.log(this.users);
-    },
-    error => alert(error.error)
-    );
-  }
 
-  isUserNameExists(){
-    for(const name of this.users){
-      const nameUser = this.userForm.value.userName;
-      if(name.userName === nameUser){
-        this.messageValidate.userName.used = 'This Username is Already used';
-        return true;
-      }
-    }
-    return false;
-  }
-
-  isEmailExists(){
-    for(const email of this.users){
-      const em = this.userForm.value.email;
-      if(email.email === em){
-        this.messageValidate.email.used = 'This Email is Already used';
-        return true;
-      }
-    }
-    return false;
-  }
 
 }

@@ -1,6 +1,6 @@
 import { LoginModel } from './../Models/login-model';
 import { FormGroup } from '@angular/forms';
-import { Users } from './../Models/user';
+
 import { RegisterModel } from './../Models/register-model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -25,9 +25,7 @@ export class RegisterServiceService {
     return this.http.post<RegisterModel>(this.baseUrl + 'Register', reg, this.headers).pipe();
   }
 
-  GetAllUsers(): Observable<Users[]> {
-    return this.http.get<Users[]>(this.baseUrl + 'GetAllUsers').pipe();
-  }
+
 
   UserLogin(log: LoginModel): Observable<LoginModel> {
     return this.http.post<LoginModel>(this.baseUrl + 'Login', log, this.headers).pipe();
