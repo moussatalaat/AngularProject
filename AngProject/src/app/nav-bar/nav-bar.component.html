@@ -19,12 +19,32 @@
       </li>
     </ul>
 
-    <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn"
+<!-- <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn"
+      routerLink="login" (click) = "Logout()">Logout</button> -->
+
+    <div class="" *ngIf = "!isUserRegistered()">
+      <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn"
       routerLink="login">Login</button>
 
     <button class="btn btn-outline-info my-2 btn-sm ml-1" type="submit" id="signUpBtn"
       routerLink="register">Register</button>
+    </div>
 
+    <div class="" *ngIf = "isUserRegistered()">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle my-2 btn-sm ml-1" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user-circle"></i>
+        </a>
+        <div class="dropdown-menu mt-4" aria-labelledby="navbarDropdown">
+
+          <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn"
+           href="#" (click) = "Logout()">Logout</button>
+        </div>
+      </li>
+    </div>
+
+      <!-- <a href="#" (click) = "">Logout</a> -->
 
   </div>
 </nav>

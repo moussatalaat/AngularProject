@@ -10,3 +10,11 @@
 .navbar {
   background-color: #001648;
 }
+.fa-user-circle:before {
+  content: "\f2bd";
+  font-size: 25px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+

@@ -18,8 +18,9 @@ export class RegisterServiceService {
   headers = {
     headers : new HttpHeaders({
       'Content-Type' : 'application/json'
-    })
-  }
+    }),
+    withCredentials:true
+  };
 
   Register(reg: RegisterModel): Observable<RegisterModel> {
     return this.http.post<RegisterModel>(this.baseUrl + 'Register', reg, this.headers).pipe();
@@ -29,6 +30,10 @@ export class RegisterServiceService {
 
   UserLogin(log: LoginModel): Observable<LoginModel> {
     return this.http.post<LoginModel>(this.baseUrl + 'Login', log, this.headers).pipe();
+  }
+
+  Logout() {
+    return this.http.get(this.baseUrl + 'Logout', { withCredentials:true }).pipe();
   }
 
 }

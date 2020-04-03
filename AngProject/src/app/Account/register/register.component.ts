@@ -23,8 +23,7 @@ export class RegisterComponent implements OnInit {
     password: {
       required: "Password is Required",
       minlength: "Minimum 8 Characters",
-      notValid:
-        "Password must contan at least 1 Uppercase 1 Lowercase and 1 Alphanumeric char"
+      notValid: "Password must contan at least 1 Uppercase 1 Lowercase and 1 Alphanumeric char"
     },
     passwordConfirm: {
       required: "Password Confirmation Required",
@@ -76,9 +75,9 @@ export class RegisterComponent implements OnInit {
           this.message = 'Registeration Succeded Please confirm your email';
           this.userForm.reset();
         },
-        error =>
+        err =>
         {
-           this.errorMessage =error.error;
+           this.errorMessage = err.error;
 
         }
       );
