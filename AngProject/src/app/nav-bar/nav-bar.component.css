@@ -18,3 +18,24 @@
   right: 30px;
 }
 
+#dropdown li {
+  list-style: none;
+}
+.nav-link {
+  padding: 2rem 1rem;
+}
+
+.dropdown-menu a {
+  color: #001648;
+}
+.dropdown-menu a:hover {
+  color: #007bff;
+  text-decoration: none;
+}
+.dropdown-menu {
+  border: 1px solid #001648;
+}
+
+.dropdown-toggle:hover {
+  color: #fff;
+}

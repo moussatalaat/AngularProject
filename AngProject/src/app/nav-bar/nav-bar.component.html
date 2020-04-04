@@ -19,32 +19,41 @@
       </li>
     </ul>
 
-<!-- <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn"
+    <!-- <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn"
       routerLink="login" (click) = "Logout()">Logout</button> -->
 
-    <div class="" *ngIf = "!isUserRegistered()">
+    <div class="" *ngIf="!isUserRegistered()">
       <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn"
-      routerLink="login">Login</button>
+        routerLink="login">Login</button>
 
-    <button class="btn btn-outline-info my-2 btn-sm ml-1" type="submit" id="signUpBtn"
-      routerLink="register">Register</button>
+      <button class="btn btn-outline-info my-2 btn-sm ml-1" type="submit" id="signUpBtn"
+        routerLink="register">Register</button>
     </div>
 
-    <div class="" *ngIf = "isUserRegistered()">
+    <!-- *ngIf = "isUserRegistered()" -->
+    <div class="" id="dropdown">
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle my-2 btn-sm ml-1" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-user-circle"></i>
         </a>
         <div class="dropdown-menu mt-4" aria-labelledby="navbarDropdown">
 
-          <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn"
-           href="#" (click) = "Logout()">Logout</button>
+          <!-- <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn" href="#"
+            (click)="Logout()">Logout</button> -->
+          <ul>
+            <li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> &nbsp;Profile</a></li>
+            <!--Choose Link or Button then Delete Other-->
+            <li><a href="#" (click)="Logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Logout</a></li>
+            <li><button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn" href="#"
+                (click)="Logout()">Logout</button></li>
+          </ul>
         </div>
       </li>
     </div>
 
-      <!-- <a href="#" (click) = "">Logout</a> -->
+    <!-- <a href="#" (click) = "">Logout</a> -->
 
   </div>
 </nav>
