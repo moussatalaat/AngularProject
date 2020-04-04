@@ -31,24 +31,17 @@
     </div>
 
     <!-- *ngIf = "isUserRegistered()" -->
-    <div class="" id="dropdown">
+    <div class="dropdown" id="dropdown" *ngIf="isUserRegistered()">
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-user-circle"></i>
         </a>
-        <div class="dropdown-menu mt-4" aria-labelledby="navbarDropdown">
-
-          <!-- <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn" href="#"
-            (click)="Logout()">Logout</button> -->
-          <ul>
-            <li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> &nbsp;Profile</a></li>
-            <!--Choose Link or Button then Delete Other-->
-            <li><a href="#" (click)="Logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Logout</a></li>
-            <li><button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn" href="#"
-                (click)="Logout()">Logout</button></li>
-          </ul>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a href="#" class="dropdown-item"> &nbsp;Profile</a>
+          <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn" href="#"
+            (click)="Logout()">Logout</button>
         </div>
       </li>
     </div>
