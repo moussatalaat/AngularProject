@@ -13,3 +13,12 @@
   width: 25%;
   margin-left: 35%;
 }
+.navbar {
+  background-color: #001648;
+}
+
+@media (min-width: 1024px) {
+  .navbar-brand {
+    margin-left: 70px;
+  }
+}

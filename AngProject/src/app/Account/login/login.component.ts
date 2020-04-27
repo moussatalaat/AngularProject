@@ -1,3 +1,4 @@
+import { tokenParams } from './../../Models/tokenParams';
 import { AuthService } from "./../../services/auth.service";
 import { LoginModel } from "./../../Models/login-model";
 import { Validators } from "@angular/forms";
@@ -28,6 +29,9 @@ export class LoginComponent implements OnInit {
     }
   };
 
+  //email: string;
+  //password:string;
+  tokenparam:tokenParams;
   message: string;
   loginForm: FormGroup;
   log: LoginModel;
@@ -54,10 +58,16 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.validateLoginModel();
       this.service.UserLogin(this.log).subscribe(
-        success => {
-          const rem = !!this.loginForm.value.rememberMe;
-          const email = this.loginForm.value.email;
-          this.auth.installStorage(rem, email);
+        (success: any) => {
+
+          this.tokenparam= success;
+          //console.log(this.tokenparam);
+          this.service.AccessToken = this.tokenparam.token;
+          //console.log(this.service.AccessToken);
+
+          //const rem = !!this.loginForm.value.rememberMe;
+          //const email = this.loginForm.value.email;
+          this.auth.installStorage(this.tokenparam);
           this.route.navigate(["home"]);
         },
         err => {
@@ -66,6 +76,20 @@ export class LoginComponent implements OnInit {
       );
     }
   }
+
+  // Login(){
+  //   if (this.loginForm.valid){
+  //     this.validateLoginModel();
+  //     this.service.
+  //   }
+
+
+  // validateLoginModel() {
+  //   this.email = this.loginForm.value.email;
+  //   this.password = this.loginForm.value.password;
+  //   //this.log.rememberMe = this.loginForm.value.rememberMe;
+  // }
+
   validateLoginModel() {
     this.log.email = this.loginForm.value.email;
     this.log.password = this.loginForm.value.password;

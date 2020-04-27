@@ -1,0 +1,57 @@
+<div class="container mt-4 mb-4">
+  <h5 class="title"><i class="fa fa-sign-in" aria-hidden="true"></i> Forget Password<i class="fa fa-sign-in"
+          aria-hidden="true"></i></h5>
+  <hr class="mb-4" />
+
+
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf = "Message != null && Message != ''">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        {{Message}}
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+          <form [formGroup]="forgetForm" (ngSubmit)="RequestPassword()" >
+
+              <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input type="email" formControlName="email" class="form-control" id="email" placeholder="Please enter your Email" pattern="^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}$"><!--  pattern="^.\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" -->
+                  <div *ngIf="this.forgetForm.get('email').invalid">
+
+                    <div class="text-danger" *ngIf="this.forgetForm.get('email').errors.required && this.forgetForm.get('email').touched">
+                      {{messageValidate.email.required}}
+                    </div>
+                    <div class="text-danger" *ngIf="this.forgetForm.get('email').errors.pattern && this.forgetForm.get('email').touched" >
+                      {{messageValidate.email.patt}}
+                    </div>
+                  </div>
+
+              </div>
+
+              <button id="submit" type="submit" class="btn btn-primary" [disabled]="forgetForm.invalid">Send</button>
+
+          </form>
+      </div>
+
+  </div>
+
+  <div class="btn-login mt-5 mb-5 text-center">
+      New? You can <a href="register" class="text-danger">Register</a> now <br>
+      <!--<a href="#" class="text-primary">Forget your password?</a>-->
+  </div>
+</div>
+
+
+
+
+<!-- <div class="text-danger" *ngIf="this.frogetForm.get('email').errors.required">
+  {{messageValidate.email.required}}
+</div> -->

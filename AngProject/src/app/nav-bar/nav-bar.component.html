@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light"><!-- *ngIf='!showNav' -->
   <a class="navbar-brand" routerLink="home"> <img src="assets/Images/SekkaLogo.png" width="70%"> </a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-control="navbarNav"
@@ -6,18 +6,21 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse " id="navbarNav">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" style="color:#03CFFF" href="#">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" style="color:#03CFFF" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" style="color:#03CFFF" href="#">Pricing</a>
-      </li>
-    </ul>
+
+  <div class="collapse navbar-collapse " id="navbarNav" *ngIf="!isUserRegistered() || isUser()">
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" style="color:#03CFFF" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color:#03CFFF" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color:#03CFFF" href="#">Pricing</a>
+        </li>
+      </ul>
+
 
     <!-- <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn"
       routerLink="login" (click) = "Logout()">Logout</button> -->
@@ -36,9 +39,9 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-user-circle"></i>
+          <i class="fa fa-user-circle" style="color: #03CFFF;"></i>
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
           <a href="#" class="dropdown-item"> <i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;Profile</a>
           <a href="#" class="dropdown-item" (click)="Logout()"> <i class="fa fa-sign-out"
               aria-hidden="true"></i>&nbsp;Logout</a>
@@ -49,4 +52,51 @@
     <!-- <a href="#" (click) = "">Logout</a> -->
 
   </div>
+  <div class="collapse navbar-collapse " id="navbarNav" *ngIf="isUserRegistered() && isAdmin()">
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" style="color:#03CFFF" href="#">Companies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#03CFFF" href="#">Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#03CFFF" href="#">Trips</a>
+      </li>
+    </ul>
+
+
+  <!-- <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn"
+    routerLink="login" (click) = "Logout()">Logout</button> -->
+
+  <!-- <div class="" *ngIf="!isUserRegistered()">
+    <button class="btn btn-outline-danger my-2 btn-sm ml-1" type="submit" id="loginBtn"
+      routerLink="login">Login</button>
+
+    <button class="btn btn-outline-info my-2 btn-sm ml-1" type="submit" id="signUpBtn"
+      routerLink="register">Register</button>
+  </div> -->
+
+  <!-- *ngIf = "isUserRegistered()" -->
+  <div class="dropdown" id="dropdown"> <!--  *ngIf="isUserRegistered()" -->
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-user-circle" style="color: #03CFFF;"></i>
+      </a>
+      <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
+        <a href="#" class="dropdown-item"> <i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;Profile</a>
+        <a href="#" class="dropdown-item" (click)="Logout()"> <i class="fa fa-sign-out"
+            aria-hidden="true"></i>&nbsp;Logout</a>
+      </div>
+    </li>
+  </div>
+
+  <!-- <a href="#" (click) = "">Logout</a> -->
+
+</div>
 </nav>
+
+

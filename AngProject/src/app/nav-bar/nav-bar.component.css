@@ -9,6 +9,7 @@
 
 .navbar {
   background-color: #001648;
+  /* background-image: 'assets/Images/Buses.jpg'; */
 }
 .fa-user-circle:before {
   content: "\f2bd";
