@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
       this.validateLoginModel();
       this.service.UserLogin(this.log).subscribe(
         (success: any) => {
-
           this.tokenparam= success;
           //console.log(this.tokenparam);
           this.service.AccessToken = this.tokenparam.token;

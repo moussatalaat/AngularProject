@@ -33,11 +33,9 @@ export class RegisterServiceService {
   }
 
 
-//
-
   // Login(email: string, password:string): Observable<tokenParams> {
 
-  //   let newHeader = new Headers({'Content-Type' : 'application/x-www-form-urlencoded  '});
+  //   let newHeader = new Headers({'Content-Type' : 'application/x-www-form-urlencoded'});
   //   var data = "grant_type=password&email=" + email + "&password" + password;
   //   return this.http.post(this.baseUrl , data, { headers: newHeader})
 

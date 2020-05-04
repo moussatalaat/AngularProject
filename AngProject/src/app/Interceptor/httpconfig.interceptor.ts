@@ -1,3 +1,4 @@
+import { CompanyService } from './../services/company.service';
 import { AuthService } from './../services/auth.service';
 import { RegisterServiceService } from 'src/app/services/register-service.service';
 import { Injectable } from '@angular/core';
@@ -17,7 +18,8 @@ import { map, catchError } from 'rxjs/operators';
 export class HttpConfigInterceptor implements HttpInterceptor {
 
     constructor(public registerservice: RegisterServiceService,
-                public authservice:AuthService
+                public authservice:AuthService,
+                public compservice:CompanyService
                ){}
 
 

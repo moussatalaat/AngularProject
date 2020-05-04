@@ -16,6 +16,10 @@ import { RegisterconfirmComponent } from './Account/registerconfirm/registerconf
 import { HttpConfigInterceptor } from './Interceptor/httpconfig.interceptor';
 import { ForgetPaswordComponent } from './Account/forget-pasword/forget-pasword.component';
 import { PasswordconfirmComponent } from './Account/passwordconfirm/passwordconfirm.component';
+import { ListComponent } from './Companies/list/list.component';
+import { DetailsComponent } from './Companies/details/details.component';
+import { AddCompanyComponent } from './Companies/add-company/add-company.component';
+import { UserHomeComponent } from './user-home/user-home.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { PasswordconfirmComponent } from './Account/passwordconfirm/passwordconf
     FooterMenuComponent,
     RegisterconfirmComponent,
     ForgetPaswordComponent,
-    PasswordconfirmComponent
+    PasswordconfirmComponent,
+    ListComponent,
+    DetailsComponent,
+    AddCompanyComponent,
+    UserHomeComponent
   ],
   imports: [
     BrowserModule,
