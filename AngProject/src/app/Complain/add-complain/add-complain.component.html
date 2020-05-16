@@ -1,0 +1,32 @@
+<div class="row justify-content-center">
+  <div class="col-lg-6 col-md-6 col-sm-6">
+
+    <form [formGroup]="addComplainForm" (ngSubmit)="AddComplain()">
+      <div class="form-group">
+        <label for="companyName">CompanyName</label>
+        <input type="text" formControlName="companyName" class="form-control" id="companyName"
+          placeholder="Please Enter your companyName"
+          [ngClass]="{'is-invalid' : !this.addComplainForm.get('companyName').valid && this.addComplainForm.get('companyName').touched}">
+        <div class="text-danger"
+          *ngIf="!this.addComplainForm.get('companyName').valid && this.addComplainForm.get('companyName').touched; ">
+          {{messageValidate.companyName.required}}
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="transportaionTypeName">Asset Type:</label>
+        <select class="form-control" id="transportaionTypeName" placeholder="Please Enter transportaionTypeName">
+          <option>Bus</option>
+          <option>Train</option>
+          <option>Plane</option>
+        </select>
+      </div>
+
+      <br>
+      <br>
+      <button id="submit" type="submit" class="btn btn-primary">Add Company</button>
+    </form>
+  </div>
+
+</div>

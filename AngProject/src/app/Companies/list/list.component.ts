@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CompanyService } from './../../services/company.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private service: CompanyService) { }
+  constructor(private service: CompanyService,
+    private route:Router) { }
 
   ngOnInit() {
     this.service.ListCompanies();
@@ -22,7 +24,8 @@ export class ListComponent implements OnInit {
 
     this.service.deletCompany(id).subscribe(success =>{
       window.alert("Deleted Successfully");
-
+      // this.route.navigate(["listCompanies"]);
+      location.reload();
     }, err => console.log(err));
   }
 }

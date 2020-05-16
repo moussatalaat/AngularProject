@@ -1,0 +1,66 @@
+<div class="container">
+  <!-- <h1>Angular Select Dropdown Example - ItSolutionStuff.com</h1> -->
+  <h1>Search</h1>
+  <form [formGroup]="serachForm" (ngSubmit)="Search()">
+
+    <div class="form-group">
+      <label for="CityFrom">From:</label>
+      <select formControlName="CityFrom" class="form-control">
+
+        <option *ngFor="let City of service.Cities" [ngValue]="City.id">{{City.name}}</option>
+      </select>
+
+    </div>
+    <div class="form-group">
+      <label for="CityTo">To:</label>
+      <select formControlName="CityTo" class="form-control" >
+
+        <option *ngFor="let City of service.Cities"  [ngValue]="City.id">{{City.name}}</option>
+      </select>
+
+    </div>
+    <div class="form-group">
+      <label for="Date"> Date </label>
+      <input id="Date" name="Date" type="date" formControlName="Date" class="form-control">
+    </div>
+
+    <button class="btn btn-primary mb-3"  type="submit">Submit</button>
+  </form>
+</div>
+
+
+<div *ngIf="Data">
+  <h1>Available Trips</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr class="table-primary">
+
+        <th scope="col">Trip Number</th>
+        <th scope="col">From</th>
+        <th scope="col">To</th>
+        <th scope="col">Departure Time</th>
+        <th scope="col">Arrival Time</th>
+        <th scope="col">Departure Date</th>
+        <th scope="col">Arrival Date</th>
+        <th scope="col">Available seats</th>
+        <th scope="col">Company</th>
+        <th scope="col">Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of Data['trips'] ">
+       <a [routerLink]="['tripDetails', item.id]" class="anchor-disable">
+        <td>{{ item.tripNum }}</td>
+        <td>{{ item.cityFrom.name }}</td>
+        <td>{{ item.cityTo.name }}</td>
+        <td>{{ item.depTime }}</td>
+        <td>{{ item.arrivalTime }}</td>
+        <td>{{ item.depDate }}</td>
+        <td>{{ item.arrivalDate }}</td>
+        <td>{{ item.availableSeats }}</td>
+        <td>{{ item.companyAssets.companies.name }}</td>
+        <td>{{ item.companyAssets.transportationCategories.categoryName }}</td>
+      </a>
+    </tbody>
+  </table>
+</div>

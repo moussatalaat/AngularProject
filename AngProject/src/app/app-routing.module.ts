@@ -1,3 +1,4 @@
+import { ListCompalinsComponent } from './Complain/list-compalins/list-compalins.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { DetailsComponent } from './Companies/details/details.component';
 import { AddCompanyComponent } from './Companies/add-company/add-company.component';
@@ -13,6 +14,8 @@ import { LoginComponent } from './Account/login/login.component';
 import { RegisterComponent } from './Account/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth.guard';
+import { TripDetailsComponent } from './CommonComponents/trip-details/trip-details.component';
+import { ComplainDetailsComponent } from './Complain/complain-details/complain-details.component';
 
 
 const routes: Routes = [
@@ -22,7 +25,10 @@ const routes: Routes = [
   {path: 'forgetpassword', component: ForgetPaswordComponent},
   {path: 'listCompanies', component: ListComponent},
   {path: 'listCompanies/companydetails/:id', component: DetailsComponent},
-  {path: 'addcompany', component: AddCompanyComponent},
+  {path: 'tripDetails/:id', component: TripDetailsComponent},
+  {path: 'tripDetails/:id', component: TripDetailsComponent},
+  {path: 'listComplains', component: ListCompalinsComponent},
+  {path: 'listComplains/complaindetails/:id', component: ComplainDetailsComponent},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'userhome', component: UserHomeComponent},
   {path: '', component: HomeComponent, pathMatch: 'full'},

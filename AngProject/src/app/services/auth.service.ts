@@ -17,7 +17,8 @@ export class AuthService {
   public installStorage(tokenparam:tokenParams){
     localStorage.setItem('email', this.crypt.Encrypt(tokenparam.email));
     localStorage.setItem('Username', this.crypt.Encrypt(tokenparam.userName));
-    localStorage.setItem('Role',this.crypt.Encrypt(tokenparam.roles));
+    localStorage.setItem('Role', this.crypt.Encrypt(tokenparam.roles));
+    localStorage.setItem('Id', this.crypt.Encrypt(tokenparam.id));
     localStorage.setItem('token',tokenparam.token);
 }
 
