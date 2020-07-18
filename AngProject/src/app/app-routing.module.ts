@@ -1,5 +1,7 @@
+import { SideBarComponent } from './CommonComponents/side-bar/side-bar.component';
+import { ProfileComponent } from './User/profile/profile.component';
+import { AddComplainComponent } from './Complain/add-complain/add-complain.component';
 import { ListCompalinsComponent } from './Complain/list-compalins/list-compalins.component';
-import { UserHomeComponent } from './user-home/user-home.component';
 import { DetailsComponent } from './Companies/details/details.component';
 import { AddCompanyComponent } from './Companies/add-company/add-company.component';
 import { ListComponent } from './Companies/list/list.component';
@@ -28,9 +30,11 @@ const routes: Routes = [
   {path: 'tripDetails/:id', component: TripDetailsComponent},
   {path: 'tripDetails/:id', component: TripDetailsComponent},
   {path: 'listComplains', component: ListCompalinsComponent},
+  {path: 'profile', component: ProfileComponent},
+  {path: 'sidebar', component: SideBarComponent},
+  {path: 'listComplains/addComplain/:id', component: AddComplainComponent},
   {path: 'listComplains/complaindetails/:id', component: ComplainDetailsComponent},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
-  {path: 'userhome', component: UserHomeComponent},
   {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'passwordconfirm', component: PasswordconfirmComponent}
 ];

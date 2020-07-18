@@ -9,6 +9,8 @@
 
 .navbar {
   background-color: #001648;
+  height: 130px;
+  position: relative;
   /* background-image: 'assets/Images/Buses.jpg'; */
 }
 .fa-user-circle:before {

@@ -36,4 +36,7 @@ export class ComplainsService {
     return this.http.get(this.baseUrl + 'Details/' + id, this.headers).pipe();
   }
 
+  addComplain(){
+
+  }
 }

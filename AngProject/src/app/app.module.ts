@@ -2,7 +2,6 @@ import { AuthService } from './services/auth.service';
 import { RegisterServiceService } from 'src/app/services/register-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './Account/login/login.component';
@@ -19,7 +18,6 @@ import { PasswordconfirmComponent } from './Account/passwordconfirm/passwordconf
 import { ListComponent } from './Companies/list/list.component';
 import { DetailsComponent } from './Companies/details/details.component';
 import { AddCompanyComponent } from './Companies/add-company/add-company.component';
-import { UserHomeComponent } from './user-home/user-home.component';
 import { SearchFormComponent } from './CommonComponents/search-form/search-form.component';
 import { TripDetailsComponent } from './CommonComponents/trip-details/trip-details.component';
 import { AddComplainComponent } from './Complain/add-complain/add-complain.component';
@@ -28,6 +26,8 @@ import { ComplainDetailsComponent } from './Complain/complain-details/complain-d
 import { AddReviewComponent } from './Review/add-review/add-review.component';
 import { ReviewDetailsComponent } from './Review/review-details/review-details.component';
 import { ListReviewsComponent } from './Review/list-reviews/list-reviews.component';
+import { ProfileComponent } from './User/profile/profile.component';
+import { SideBarComponent } from './CommonComponents/side-bar/side-bar.component';
 //import { DatePipe } from '@angular/common';
 //import {MatDatepickerModule, MatNativeDateModule} from '@angular/material'
 
@@ -45,7 +45,6 @@ import { ListReviewsComponent } from './Review/list-reviews/list-reviews.compone
     ListComponent,
     DetailsComponent,
     AddCompanyComponent,
-    UserHomeComponent,
     SearchFormComponent,
     TripDetailsComponent,
     AddComplainComponent,
@@ -54,6 +53,8 @@ import { ListReviewsComponent } from './Review/list-reviews/list-reviews.compone
     AddReviewComponent,
     ReviewDetailsComponent,
     ListReviewsComponent,
+    ProfileComponent,
+    SideBarComponent,
   ],
   imports: [
     BrowserModule,

@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string;
 
   ngOnInit() {
+    document.body.classList.remove("navBarLoaded");
     this.message = "";
     this.errorMessage = "";
 

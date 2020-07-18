@@ -1,5 +1,7 @@
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ComplainsService } from 'src/app/services/complains.service';
 
 @Component({
   selector: 'app-add-complain',
@@ -8,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddComplainComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private activeRoute: ActivatedRoute,
+    private route: Router,
+    private service: ComplainsService) { }
 
   public messageValidate = {
     companyName: {
@@ -22,6 +27,20 @@ export class AddComplainComponent implements OnInit {
   addComplainForm:FormGroup
 
   ngOnInit() {
+    // this.activeRoute.paramMap.subscribe(params =>{
+    //   // console.log(params);
+    //    const id = params.get('id');
+    //    if (id != null){
+    //      console.log('id: ' + id);
+    //      this.service.addComplain().subscribe((success: any)=>{
+    //        this.CompDetails = success;
+    //       //  this.CompDetailsId = this.CompDetails.id;
+    //        console.log(this.CompDetails);
+    //        //this.filldataform();
+    //        console.log('success');
+    //      }, ex => console.log(ex));
+    //    }
+    //  }, ex => console.log(ex));
   }
 
 

@@ -1,3 +1,4 @@
+import { Common } from './../Global';
 import { CryptService } from './../services/crypt.service';
 import { AuthService } from './../services/auth.service';
 import { Router } from '@angular/router';
@@ -9,21 +10,27 @@ import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "app-nav-bar",
   templateUrl: "./nav-bar.component.html",
-  styleUrls: ["./nav-bar.component.css"]
+  styleUrls: ["./nav-bar.component.css"],
+  providers: [ Common ]
 })
 export class NavBarComponent implements OnInit {
   constructor(
     private service: RegisterServiceService,
     private route:Router,
     private auth:AuthService,
-    private crypt:CryptService
+    private crypt:CryptService,
+    public globals: Common
   ) {}
+
+golbalNavWidth : number
 
 
   title = "/assests/SekkaLogo.png"; // logo image
   //showNav = true;
 
   ngOnInit() {
+    document.body.classList.add("navBarLoaded");
+    this.updateNaveWidth();
     // this.service.getUsers().subscribe(succ =>{
     //   const data = succ
     //   console.log(data);
@@ -34,12 +41,15 @@ export class NavBarComponent implements OnInit {
     if(email != null && UserName != null && role != null){
     if(!!this.auth.CheckStorage()){
       this.Logout();
+
     }
   }
   }
 
 
-
+  updateNaveWidth(){
+   console.log(this.golbalNavWidth = this.globals.navWidth) ;
+}
 
   Logout(){
       localStorage.clear();
